@@ -12,34 +12,12 @@ public class MoleculesList extends Thread {
     int pomp = 0;
     private double cof = 1;
 
-    public int getxBorder() {
-        return xBorder;
-    }
-
     public void setxBorder(int xBorder) {
         this.xBorder = xBorder;
     }
 
-    public int getyBorder() {
-        return yBorder;
-    }
-
     public void setyBorder(int yBorder) {
         this.yBorder = yBorder;
-    }
-
-    public ArrayList<Molecule> getMoleculesList () {
-        return molecules;
-    }
-    public void setMoleculesList(ArrayList<Molecule> moleculesList) {
-        molecules = moleculesList;
-    }
-
-    public double calcCof () {
-        int v = 700;
-        double p = calcPressure();
-
-        return (p*Math.pow(p, 1.5));
     }
 
     MoleculesList(int length, int xBorder, int yBorder) {

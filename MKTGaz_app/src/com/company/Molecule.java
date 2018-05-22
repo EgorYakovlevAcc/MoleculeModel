@@ -9,15 +9,6 @@ public class  Molecule {
     private int yDir;
     public final int MOLECULE_SIZE = 10;
 
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
     public void setxCoord(int xCoord) {
         this.xCoord = xCoord;
     }

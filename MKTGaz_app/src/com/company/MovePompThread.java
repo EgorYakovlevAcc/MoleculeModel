@@ -31,4 +31,8 @@ public class MovePompThread extends Thread {
     public int getY() {
         return y;
     }
+
+    public  void setX(int xB) {
+        x = xB;
+    }
 }

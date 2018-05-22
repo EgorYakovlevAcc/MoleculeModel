@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Panel extends JPanel implements ActionListener {
-    int x = 700;
-    int y = 51;
+    public int x = 700;
+    public int y = 51;
 
     boolean isInit = false;
 
@@ -29,7 +29,7 @@ public class Panel extends JPanel implements ActionListener {
     Timer timer;
     MovePompThread pompThread;
     volatile MoleculesList moleculesList;
-    volatile Map<Integer, Double> valuePress = new HashMap<Integer, Double>();
+    public volatile Map<Integer, Double> valuePress = new HashMap<Integer, Double>();
 
     Panel(JLabel labelP, JLabel labelV) {
         pompThread = new MovePompThread(x, y);

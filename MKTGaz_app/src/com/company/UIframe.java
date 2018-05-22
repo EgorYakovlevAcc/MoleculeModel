@@ -11,7 +11,7 @@ public class  UIframe extends JFrame {
     boolean isStopped = false;
     Panel panel;
     JButton showGraphButton;
-    JButton startButton;
+    JButton startButton, resetButton;
     JLabel pressureLabel, volumeLabel;
 
     public UIframe(String title) throws HeadlessException {
@@ -64,6 +64,7 @@ public class  UIframe extends JFrame {
                 speedOfMolecules.setEnabled(false);
                 numberOfMolecules.setEnabled(false);
                 enterMoleculesData.setEnabled(false);
+                resetButton.setEnabled(true);
             }
         });
         enterMoleculesData.setBounds (760, 280, 100, 30);
@@ -77,9 +78,11 @@ public class  UIframe extends JFrame {
                 if (!isStopped) {
                     startButton.setText("Stop");
                     isStopped = true;
+                    resetButton.setEnabled(false);
                     panel.start();
                 } else {
                     startButton.setText("Start");
+                    resetButton.setEnabled(true);
                     isStopped = false;
                     try {
                         panel.stop();
@@ -97,12 +100,33 @@ public class  UIframe extends JFrame {
         showGraphButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PlotFrameThread(panel.getVolPress()).start();
+               new PlotFrameThread(panel.getVolPress()).start();
             }
         });
         showGraphButton.setBounds(250, 630, 150, 30);
         showGraphButton.setEnabled(false);
         add(showGraphButton);
+
+        resetButton = new JButton("Reset");
+        resetButton.setBounds(450, 630, 150, 30);
+        add (resetButton);
+        resetButton.setEnabled(false);
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                resetButton.setEnabled(false);
+                startButton.setEnabled(false);
+                enterMoleculesData.setEnabled(true);
+                speedOfMolecules.setEnabled(true);
+                showGraphButton.setEnabled(false);
+                numberOfMolecules.setEnabled(true);
+
+                panel.timer.stop();
+                panel.moleculesList.interrupt();
+                panel.valuePress.clear();
+                panel.x = 700;
+            }
+        });
 
         setVisible(true);
     }

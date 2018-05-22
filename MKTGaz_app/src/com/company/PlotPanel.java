@@ -12,7 +12,7 @@ public class PlotPanel extends JPanel implements ActionListener {
     Timer timer = new Timer(100, this);
     HashMap<Integer, Double> hashMap;
     int k = 1;
-    double press;
+    double press = 100;
 
     PlotPanel (HashMap<Integer, Double> hashMap) {
         this.hashMap = hashMap;
