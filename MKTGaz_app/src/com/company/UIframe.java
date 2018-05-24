@@ -10,8 +10,7 @@ import java.util.HashMap;
 public class  UIframe extends JFrame {
     boolean isStopped = false;
     Panel panel;
-    JButton showGraphButton;
-    JButton startButton, resetButton;
+    JButton startButton, resetButton, showGraphButton, infoButton;
     JLabel pressureLabel, volumeLabel;
 
     public UIframe(String title) throws HeadlessException {
@@ -128,6 +127,16 @@ public class  UIframe extends JFrame {
             }
         });
 
+        infoButton = new JButton("Info");
+        infoButton.setBounds(780, 630, 80, 30);
+        infoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new InfoFrameThread().run();
+            }
+        });
+        add(infoButton);
+
         setVisible(true);
     }
 
@@ -142,6 +151,14 @@ class PlotFrameThread extends Thread {
     @Override
     public void run () {
         new PlotFrame (hashMap);
+    }
+}
+
+class InfoFrameThread extends Thread {
+
+    @Override
+    public void run() {
+        new InfoFrame();
     }
 }
 
