@@ -40,7 +40,7 @@ public class Panel extends JPanel implements ActionListener {
 
     void start() {
         if (!timer.isRunning()) {
-            moleculesList = new MoleculesList(numberOfMolecules, x, y);
+            moleculesList = new MoleculesList(numberOfMolecules, x, y, speed);
             isInit = true;
             timer.start();
         }
@@ -98,9 +98,9 @@ public class Panel extends JPanel implements ActionListener {
             moleculesList.setxBorder(x - 10);
             moleculesList.setyBorder(y);
         }
-        valuePress.put(x, getPressure());
+        valuePress.put(x - 50, getPressure());
         labelP.setText ("Pressure: " + (int) (getPressure()*100));
-        labelV.setText ("Volume: " + x);
+        labelV.setText ("Volume: " + (x - 50));
         repaint();
      }
 

@@ -13,7 +13,7 @@ public class MovePompThread extends Thread {
 
     @Override
     public void run () {
-        while (x > 100) {
+        while (x > 150) {
             if (flag) {
                 x = x - 1;
                 try {

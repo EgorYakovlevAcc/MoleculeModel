@@ -5,11 +5,9 @@ import java.util.Random;
 
 public class MoleculesList extends Thread {
     ArrayList<Molecule> molecules;
-    MoleculesThread moleculesThread;
-    int xBorder = 700;
+    int xBorder;
     int yBorder;
-    int ieter = 0;
-    int pomp = 0;
+    int speed;
     private double cof = 1;
 
     public void setxBorder(int xBorder) {
@@ -20,7 +18,10 @@ public class MoleculesList extends Thread {
         this.yBorder = yBorder;
     }
 
-    MoleculesList(int length, int xBorder, int yBorder) {
+    MoleculesList(int length, int xBorder, int yBorder, int speed) {
+
+        this.speed = speed;
+
         int x = 0;
         int y = 0;
 
@@ -37,7 +38,7 @@ public class MoleculesList extends Thread {
             xDir = new Random().nextInt(450) + 50;
             yDir = new Random().nextInt(450) + 50;
 
-            molecules.add(new Molecule(10, x, y, xDir, yDir));
+            molecules.add(new Molecule(speed, x, y, xDir, yDir));
         }
     }
 
